@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Identity.Models.Customer>  
+  
+<p>  
+    @Html.ActionLink("Create New", "Create")  
+</p>  
+<table class="table">  
+    <tr class="btn-primary">  
+        <th>  
+            @Html.DisplayNameFor(model => model.CustId)  
+        </th>  
+        <th>  
+            @Html.DisplayNameFor(model => model.Name)  
+        </th>  
+        <th>  
+            @Html.DisplayNameFor(model => model.Address)  
+        </th>  
+        <th>  
+            @Html.DisplayNameFor(model => model.Email)  
+        </th>  
+        <th>  
+            @Html.DisplayNameFor(model => model.MobileNo)  
+        </th>  
+        <th>  
+            @Html.DisplayNameFor(model => model.DateOfBirth)  
+        </th> 
+        <th>  
+            @Html.DisplayNameFor(model => model.Custom)  
+        </th> 
+        <th>Action</th>  
+    </tr>  
+  
+@foreach (var item in Model) {  
+    <tr class="btn-info">  
+        <td>  
+            @Html.DisplayFor(modelItem => item.CustId)  
+        </td>  
+        <td>  
+            @Html.DisplayFor(modelItem => item.Name)  
+        </td>  
+        <td>  
+            @Html.DisplayFor(modelItem => item.Address)  
+        </td>  
+        <td>  
+            @Html.DisplayFor(modelItem => item.Email)  
+        </td>  
+        <td>  
+            @Html.DisplayFor(modelItem => item.MobileNo)  
+        </td>  
+        <td>  
+            @Html.DisplayFor(modelItem => item.DateOfBirth)  
+        </td>
+        <td>  
+            @Html.DisplayFor(modelItem => item.Custom)  
+        </td>
+        <td>  
+            @Html.ActionLink("Edit", "Edit", new {  id=item.CustId }) |  
+            @Html.ActionLink("Details", "Details", new { id = item.CustId }) |  
+            @Html.ActionLink("Delete", "Delete", new { id = item.CustId })  
+        </td>  
+    </tr>  
+}  
+  
+</table>  

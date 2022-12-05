@@ -1,0 +1,85 @@
+﻿@using System.Security.Claims
+@using Microsoft.AspNetCore.Http
+@inject RoleManager<IdentityRole> roleManager
+@inject UserManager<AppUser> userManager
+@model IEnumerable<AppUser>
+@{
+    ViewData["Title"] = "READ USER";
+}
+
+<h1 class="bg-info text-white">All Users</h1>
+@if((bool)ViewData["HasPermissionOfAddUser"])
+{
+	<a asp-action="Create" class="btn btn-secondary">Create a User</a>
+}
+
+@*@{
+  var roles = User.Claims.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value).ToList();
+}
+<li>
+ @foreach (var claim in roles)
+ {
+     <b>Role:</b><p>@claim</p>
+ }*@
+
+
+ @*@if (User.Identity.IsAuthenticated)
+{
+    var user = await userManager.GetUserAsync(HttpContextAccessor.HttpContext.User);
+    var roles = await userManager.GetRolesAsync(user);
+    <div>
+        <h1>Your Account:</h1>
+        <ul>
+            <li><b>Login:</b><p>@userManager.GetUserName(User)</p></li>
+            <li>
+                @foreach (var role in roles)
+                {
+                    <b>Role:</b><p>@role</p>
+                }
+            </li>
+        </ul>
+    </div>
+}*@  
+<table class="table table-sm table-bordered">
+	<tr>
+		<th>ID</th>
+		<th>UserName</th>
+		<th>Email</th>
+		<th>Update</th>
+		<th>Delete</th>
+		<th>View</th>
+	</tr>
+	@foreach (AppUser user in Model)
+	{
+		<tr>
+			<td>@user.Id</td>
+			<td>@user.UserName</td>
+			<td>@user.Email</td>
+			
+			<td>
+				@if((bool)ViewData["HasPermissionOfUpdateUser"])
+{
+				<a class="btn btn-sm btn-primary" asp-action="Update" asp-route-id="@user.Id">
+					Update
+				</a>
+	}
+			</td>
+			<td>
+				<form asp-action="Delete" asp-route-id="@user.Id" method="post">
+						<button type="submit" class="btn btn-sm btn-danger">
+                        Delete
+                    </button>
+                </form>
+				
+            </td>
+			<td>
+				<a class="btn btn-sm btn-primary" asp-action="View" asp-route-id="@user.Id">
+					View
+				</a>
+			</td>
+		</tr>
+	}
+	<p>
+		@ViewBag.Userid
+	</p>
+</table>

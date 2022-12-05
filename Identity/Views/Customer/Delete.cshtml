@@ -1,0 +1,65 @@
+﻿@model Identity.Models.Customer  
+  
+<h3>Are you sure you want to delete this?</h3>  
+<div>  
+    <h4>Customer</h4>  
+    <hr />  
+@using (Html.BeginForm())  
+{  
+    @Html.AntiForgeryToken()  
+    <dl class="dl-horizontal">  
+        @Html.HiddenFor(model => model.CustId)  
+        <dt>  
+            @Html.DisplayNameFor(model => model.Name)  
+        </dt>  
+  
+        <dd>  
+            @Html.DisplayFor(model => model.Name)  
+        </dd>  
+  
+        <dt>  
+            @Html.DisplayNameFor(model => model.Address)  
+        </dt>  
+  
+        <dd>  
+            @Html.DisplayFor(model => model.Address)  
+        </dd>  
+  
+        <dt>  
+            @Html.DisplayNameFor(model => model.Email)  
+        </dt>  
+  
+        <dd>  
+            @Html.DisplayFor(model => model.Email)  
+        </dd>  
+  
+        <dt>  
+            @Html.DisplayNameFor(model => model.MobileNo)  
+        </dt>  
+  
+        <dd>  
+            @Html.DisplayFor(model => model.MobileNo)  
+        </dd>  
+        <dt>  
+            @Html.DisplayNameFor(model => model.DateOfBirth)  
+        </dt>  
+  
+        <dd>  
+            @Html.DisplayFor(model => model.DateOfBirth)  
+        </dd>  
+         <dt>  
+            @Html.DisplayNameFor(model => model.Custom)  
+        </dt>  
+  
+        <dd>  
+            @Html.DisplayFor(model => model.Custom)  
+        </dd>  
+  
+    </dl>  
+  
+        <div class="form-actions no-color">  
+            <input type="submit" value="Delete" class="btn btn-default" /> |  
+            @Html.ActionLink("Back to List", "CustDetails")  
+        </div>  
+    }  
+</div>  

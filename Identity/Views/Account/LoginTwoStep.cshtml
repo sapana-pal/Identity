@@ -1,0 +1,18 @@
+﻿@model TwoFactor
+
+@{
+    ViewData["Title"] = "Login Two Step";
+}
+
+<h1 class="bg-info text-white">Login Two Step</h1>
+<div class="text-danger" asp-validation-summary="All"></div>
+
+<p>Enter your authentication code</p>
+
+<form asp-action="LoginTwoStep" method="post">
+    <div class="form-group">
+        <label>Code</label>
+        <input asp-for="TwoFactorCode" class="form-control" />
+    </div>
+    <button class="btn btn-primary" type="submit">Log In</button>
+</form>
